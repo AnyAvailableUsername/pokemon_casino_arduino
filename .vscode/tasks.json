@@ -1,0 +1,86 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Arduino: Compile",
+      "type": "shell",
+      "command": "arduino-cli",
+      "args": [
+        "compile",
+        "--fqbn",
+        "${input:arduinoFqbn}",
+        "${workspaceFolder}"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Arduino: Upload",
+      "type": "shell",
+      "command": "arduino-cli",
+      "args": [
+        "upload",
+        "-p",
+        "${input:arduinoPort}",
+        "--fqbn",
+        "${input:arduinoFqbn}",
+        "${workspaceFolder}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Arduino: Monitor",
+      "type": "shell",
+      "command": "arduino-cli",
+      "args": [
+        "monitor",
+        "-p",
+        "${input:arduinoPort}",
+        "-c",
+        "baudrate=${input:arduinoBaud}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Arduino: Compile + Upload + Monitor",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Arduino: Compile",
+        "Arduino: Upload",
+        "Arduino: Monitor"
+      ],
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "arduinoPort",
+      "type": "pickString",
+      "description": "Select COM port",
+      "options": [
+        "COM18"
+      ],
+      "default": "COM18"
+    },
+    {
+      "id": "arduinoBaud",
+      "type": "pickString",
+      "description": "Select baud rate",
+      "options": [
+        "9600",
+        "115200"
+      ],
+      "default": "9600"
+    },
+    {
+      "id": "arduinoFqbn",
+      "type": "pickString",
+      "description": "Select Arduino board",
+      "options": [
+        "arduino:avr:micro",
+        "arduino:avr:leonardo"
+      ],
+      "default": "arduino:avr:micro"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ private:
     float velY = 0;
     float accX = 0;
     float accY = 0;
-    float mass = 5000;
+    float mass = 50000;
     float friction = 1.1;
 
 public:

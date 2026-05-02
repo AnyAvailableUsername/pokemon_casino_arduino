@@ -1,9 +1,9 @@
 #include <Arduino.h>
-#include "IO/Joystick/Joystick.h"
-#include "IO/Display/Display.h"
-#include "IO/Speaker/Speaker.h"
-#include "Logic/Accelerator/Accelerator.h"
-#include "Logic/Timer/Timer.h"
+#include "src/IO/Joystick/Joystick.h"
+#include "src/IO/Display/Display.h"
+#include "src/IO/Speaker/Speaker.h"
+#include "src/Logic/Accelerator/Accelerator.h"
+#include "src/Logic/Timer/Timer.h"
 
 Display display;
 Joystick joystick(A0, A1, 4);
@@ -69,7 +69,7 @@ void update(unsigned long passedTimeMs) {
 }
 
 void render() {
-    joystick.print();
+    // joystick.print();
     display.point(cursor.positionX(), cursor.positionY());
 }
 

@@ -2,6 +2,17 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Arduino: Scan",
+      "type": "shell",
+      "command": "arduino-cli",
+      "args": [
+        "board",
+        "list"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
       "label": "Arduino: Compile",
       "type": "shell",
       "command": "arduino-cli",
@@ -58,6 +69,7 @@
       "type": "pickString",
       "description": "Select COM port",
       "options": [
+        "COM5",
         "COM18"
       ],
       "default": "COM18"

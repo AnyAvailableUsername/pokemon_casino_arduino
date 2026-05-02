@@ -28,3 +28,5 @@ arduino-cli upload -p COM18 --fqbn arduino:avr:micro .
 arduino-cli monitor -p COM18 -c baudrate=9600
 ```
 
+- added task to run all of this more easily (see ./.vscode/tasks.json)
+

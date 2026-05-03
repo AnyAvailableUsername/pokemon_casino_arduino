@@ -97,7 +97,6 @@
 class Speaker {
 private:
     int pin; // Pin connected to the speaker
-    int pauseTillNext=0;
 
 public:
     // Constructor

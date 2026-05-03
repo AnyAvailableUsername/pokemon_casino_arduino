@@ -14,12 +14,11 @@ void Speaker::playTone(int frequency, int duration) {
 }
 
 void Speaker::play(Melody* const melody, unsigned long passedTimeMs) {
-    pauseTillNext -= passedTimeMs;
-    if (pauseTillNext < 0) {
-        Note note = melody->next();
-        playTone(note.frequency, note.duration);
-        pauseTillNext = note.duration * 1.2;
-    }
+    if (melody->isPausing(passedTimeMs))
+        return;
+
+    Note note = melody->next();
+    playTone(note.frequency, note.duration);
 }
 
 void Speaker::playMelody(const Note* melody, int size) {

@@ -70,3 +70,23 @@ void Display::point(int x, int y) {
   _display.display();
 
 }
+
+void Display::draw(Symbol& symbol, int atX, int atY) {
+  display.drawBitmap(
+    atX, atY,
+    symbol.bitmap,
+    symbol.width, symbol.height,
+    SSD1306_WHITE
+  );
+}
+
+void Display::draw(Wheel& wheel, int atX, int atY) {
+  Symbol* symbols = wheel.symbols;
+  pos = wheel.wheelPosition();
+  index = int(pos);
+  float offset = pos - index;
+  for (int i=index-1; i < index+2; i++) {
+    draw(symbols[i], atX, atY);
+  }
+
+}

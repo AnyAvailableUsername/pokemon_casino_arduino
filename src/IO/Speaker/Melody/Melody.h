@@ -7,7 +7,7 @@ private:
     const Note* content;
     int currentIndex=0;
     int size;
-    unsigned long pauseTillNext=0;
+    int pauseTillNext=0;
 
 public:
     Melody(const Note* melody, int size);

@@ -1,21 +1,19 @@
 #pragma once
 #include <Arduino.h>
 #include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
+#include <U8g2lib.h>
 
-#include "../../Logic/Symbol.h"
-#include "../../Logic/Wheel.h"
+#include "../../Logic/SlotMachine/Symbol/Symbol.h"
+#include "../../Logic/SlotMachine/Wheel/Wheel.h"
 
 #define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 32
-#define OLED_ADDR 0x3C
+#define SCREEN_HEIGHT 128
 
 class Display {
 public:
   Display();
 
-  // initializes Wire + SSD1306; returns false if failed
+  // initializes Wire + u8g2; returns false if failed
   bool begin();
 
   // print a message; clear==true starts a fresh 4-line buffer
@@ -23,11 +21,14 @@ public:
   void clear();
   void printAt(const String &msg, int textSize, int v_offset, int h_offset);
   void point(int x, int y);
-  void draw(Symbol& Symbol);
-  void draw(Wheel& wheel);
+  void draw(Symbol& Symbol, int atX, int atY);
+  void draw(Wheel& wheel, int atX, int atY);
 
 private:
-  Adafruit_SSD1306 _display;
+  U8G2_SH1107_128X128_1_HW_I2C _display;  // u8g2 driver
   String _lines[4];
   int _n;
+
+  void u8g_println(const String& str, int size);     // helper to approximate Adafruit textSize
+  void u8g_print(const String& str, int size);       // helper
 };

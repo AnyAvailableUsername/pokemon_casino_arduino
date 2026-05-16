@@ -1,3 +1,4 @@
+
 #include <Arduino.h>
 #include "src/IO/Joystick/Joystick.h"
 #include "src/IO/Display/Display.h"
@@ -6,8 +7,8 @@
 #include "src/Logic/Timer/Timer.h"
 
 Display display;
-Joystick joystick(A0, A1, 4);
-Speaker speaker(5);
+Joystick joystick(A0, A1, 6);
+Speaker speaker(4);
 Timer timer = Timer();
 Accelerator cursor = Accelerator();
 int fps = 30;
@@ -51,29 +52,35 @@ Note notes[] = {
 
 Melody *melody = new Melody(notes, sizeof(notes)/sizeof(notes[0]));
 
+
 void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
     Serial.begin(9600);
+    delay(10000);
+    Serial.println("Initializing...");
     if (!display.begin()) {
-        Serial.println("Display init failed");
-        for (;;) {}
+        for (;;) {
+            Serial.println("Display init failed");
+        }
     }
 
-    //display.say("Booting...", true);
+    // display.say("Booting...", true);
     joystick.begin();
+    Serial.println("Setup done");
 }
 
 void update(unsigned long passedTimeMs) {
-    cursor.update(joystick.readX(), joystick.readY(), passedTimeMs);
+    // cursor.update(joystick.readX(), joystick.readY(), passedTimeMs);
     speaker.play(melody, passedTimeMs);
 }
 
 void render() {
     // joystick.print();
-    display.point(cursor.positionX(), cursor.positionY());
+    // display.point(cursor.positionX(), cursor.positionY());
 }
 
 void loop() {
+    // Serial.println("Looping... ");
     int passedTime = timer.passedTime();
     if (passedTime >= 1000 / fps) {
         timer.update();

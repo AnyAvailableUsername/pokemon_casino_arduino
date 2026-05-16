@@ -1,5 +1,7 @@
+#pragma once
+
 struct Symbol {
-int *bitmap;
+const unsigned char* bitmap;
 int width;
 int height;
 

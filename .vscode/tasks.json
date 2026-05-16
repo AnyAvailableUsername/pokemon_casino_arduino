@@ -2,6 +2,16 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Arduino: Install",
+      "type": "shell",
+      "command": "arduino-cli",
+      "args": [
+        "lib",
+        "install",
+        "${input:libName}"
+      ]
+    },
+    {
       "label": "Arduino: Scan",
       "type": "shell",
       "command": "arduino-cli",
@@ -70,9 +80,11 @@
       "description": "Select COM port",
       "options": [
         "COM5",
-        "COM18"
+        "COM18",
+        "COM20",
+        "COM19"
       ],
-      "default": "COM18"
+      "default": "COM19"
     },
     {
       "id": "arduinoBaud",

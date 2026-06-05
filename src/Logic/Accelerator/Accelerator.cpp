@@ -13,8 +13,6 @@ void Accelerator::update(
     velY /= friction;
     posX += velX * passedTimeMs;
     posY += velY * passedTimeMs;
-    posX = constrain(posX, 0, 128-1);
-    posY = constrain(posY, 0, 32-1);
 }
 
 float Accelerator::positionX() {

@@ -71,7 +71,21 @@
         "Arduino: Monitor"
       ],
       "problemMatcher": []
-    }
+    },
+    {
+      "label": "Arduino: Auto Compile + Upload",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\.vscode\\arduino-auto-upload.ps1",
+        "${workspaceFolder}"
+      ],
+      "problemMatcher": []
+  }
   ],
   "inputs": [
     {
@@ -82,9 +96,10 @@
         "COM5",
         "COM18",
         "COM20",
+        "COM21",
         "COM19"
       ],
-      "default": "COM19"
+      "default": "COM21"
     },
     {
       "id": "arduinoBaud",

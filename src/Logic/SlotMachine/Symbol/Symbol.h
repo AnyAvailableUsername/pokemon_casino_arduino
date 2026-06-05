@@ -1,9 +1,9 @@
 #pragma once
 
 struct Symbol {
-const unsigned char* bitmap;
-int width;
-int height;
+    const unsigned char* bitmap;
+    int width;
+    int height;
 };
 
 // int bitmap[] = {
